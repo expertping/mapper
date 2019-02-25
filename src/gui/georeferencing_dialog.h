@@ -30,6 +30,7 @@
 #include "tools/tool.h"
 
 class QAction;
+class QCheckBox;
 class QCursor;
 class QDialogButtonBox;
 class QDoubleSpinBox;
@@ -126,6 +127,11 @@ public:
 	void declinationChanged();
 	
 	/**
+	  * Updates the grid scale factor widget from the georeferencing.
+	  */
+	void gridScaleFactorChanged();
+	
+	/**
 	 * Triggers an online request for the magnetic declination.
 	 * 
 	 * @param no_confirm If true, the user will not be asked for confirmation.
@@ -194,6 +200,12 @@ protected:
 	void scaleFactorEdited();
 	
 	/**
+	 * Notifies the dialog of a change in the automatic grid scale
+	 * factor checkbox.
+	 */
+	void autoGridScaleCheckToggled(bool checked);
+	
+	/**
 	 * Hides the dialog and activates a GeoreferencingTool for selecting
 	 * the reference point on the map.
 	 */
@@ -250,6 +262,7 @@ private:
 	QLabel* status_label;
 	QLabel* status_field;
 	QDoubleSpinBox* scale_factor_edit;
+	QCheckBox* auto_grid_scale_factor_check;
 	
 	QDoubleSpinBox* map_x_edit;
 	QDoubleSpinBox* map_y_edit;
